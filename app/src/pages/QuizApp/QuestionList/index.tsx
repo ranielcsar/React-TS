@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { QStore } from '../types'
+import React, { useState, useContext, useCallback, useEffect } from 'react'
+import { QStore, TQuestion } from '../types'
 import { QStoreContext } from '../QuestionStore'
 import Question from '../Question'
 
@@ -10,13 +10,33 @@ const QuestionList: React.FC = () => {
     state: { questions },
   } = useContext<QStore>(QStoreContext)
 
-  return (
-    <>
-      {questions.map((question) => (
-        <Question question={question} key={question.id} />
-      ))}
-    </>
-  )
+  const [currentQuestion, setCurrentQuestion] = useState<TQuestion>()
+  const [question, setQuestion] = useState<number>(0)
+  const checkCurrentQuestion = useCallback(() => {
+    if (question === questions.length - 1 || question === 0) return
+  }, [])
+
+  const handleNextQuestion = useCallback(() => {
+    checkCurrentQuestion()
+    setQuestion(question + 1)
+
+    let currentQuestion = questions[question]
+    setCurrentQuestion(currentQuestion)
+  }, [])
+
+  const handlePreviewQuestion = useCallback(() => {
+    checkCurrentQuestion()
+    setQuestion(question - 1)
+
+    let currentQuestion = questions[question]
+    setCurrentQuestion(currentQuestion)
+  }, [])
+
+  useEffect(() => {
+    setCurrentQuestion(questions[question])
+  }, [])
+
+  return <>{currentQuestion && <Question question={currentQuestion} />}</>
 }
 
 export default QuestionList
