@@ -6,7 +6,7 @@ type Props = {
   label: string
 }
 
-const NavLink: React.FC<Props> = ({ url, label }): JSX.Element => (
+const NavLink: React.FC<Props> = ({ url, label }) => (
   <Container to={`/${url}`}>{label}</Container>
 )
 

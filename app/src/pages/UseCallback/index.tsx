@@ -6,7 +6,7 @@ import ImageList from './ImageList'
 
 import { Container } from './styles'
 
-const UseCallback: React.FC = (): JSX.Element => {
+const UseCallback: React.FC = () => {
   const [images, setImages] = useState<TImage[]>()
 
   const fetchImages = useCallback(async () => {

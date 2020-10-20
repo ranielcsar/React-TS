@@ -5,7 +5,7 @@ import PostList from './PostList'
 import AddNewPost from './AddNewPost'
 import { Container } from './styles'
 
-const UseReducerBlog: React.FC = (): JSX.Element => (
+const UseReducerBlog: React.FC = () => (
   <PageContainer title={'UseReducerBlog'}>
     <Store>
       <Container>
