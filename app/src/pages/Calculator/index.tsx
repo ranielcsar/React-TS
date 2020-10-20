@@ -1,22 +1,8 @@
 import React, { useState, MouseEvent } from 'react'
 import PageContainer from '../../containers/PageContainer'
-import {
-  sum,
-  subtraction,
-  multiplication,
-  division,
-  addValueToNumber,
-} from './utils'
+import { sum, subtraction, multiplication, division, addValueToNumber } from './utils'
 import Button from '../../components/Button'
-import {
-  Container,
-  CalcScreen,
-  Keyboard,
-  Numbers,
-  Operations,
-  EqualButton,
-  ResetButton,
-} from './styles'
+import { Container, CalcScreen, Keyboard, Numbers, Operations, EqualButton, ResetButton } from './styles'
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 const operations = ['+', '-', '/', '*']
@@ -108,6 +94,7 @@ const Calculator: React.FC = () => {
           {firstNumber} {operation} {hasFirstNumber && secondNumber}
           {result && result > 0 ? <p> = {result}</p> : ''}
         </CalcScreen>
+
         <Keyboard>
           <Numbers>
             {numbers.map((number) => (
@@ -119,11 +106,7 @@ const Calculator: React.FC = () => {
           <Operations>
             <ResetButton onClick={handleReset}>C</ResetButton>
             {operations.map((operation, index) => (
-              <Button
-                key={index}
-                label={operation}
-                onClick={handleButtonValue}
-              />
+              <Button key={index} label={operation} onClick={handleButtonValue} />
             ))}
           </Operations>
         </Keyboard>

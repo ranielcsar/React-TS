@@ -1,26 +1,19 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.label`
   display: grid;
   grid-template-columns: 1.2rem 1fr;
   grid-column-gap: 0.6rem;
-  cursor: pointer;
-  padding: 0.625rem 1.25rem;
-  width: max-content;
-  min-width: 11rem;
-  margin-bottom: 0.5rem;
+  align-items: center;
   position: relative;
+  cursor: pointer;
+  width: max-content;
 
   p {
+    width: max-content;
     margin: 0;
+    grid-column: 2;
   }
-`
-
-export const RadioCustom = styled.label`
-  display: block;
-  position: relative;
-  cursor: pointer;
-  margin: auto;
 
   & input[type='radio'] {
     position: absolute;
@@ -30,9 +23,7 @@ export const RadioCustom = styled.label`
   }
 
   .radio-custom {
-    position: absolute;
-    top: -0.6875rem;
-    left: -0.75rem;
+    grid-column: 1;
     height: 1.375rem;
     width: 1.375rem;
     background: transparent;

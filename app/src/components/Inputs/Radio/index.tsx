@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Container, RadioCustom } from './styles'
+import { Container } from './styles'
 
 type TAnswer = {
   answer_id: string
@@ -12,22 +12,10 @@ type Props = {
   defaultChecked?: boolean
 }
 
-const Radio: React.ForwardRefRenderFunction<HTMLInputElement, Props> = (
-  { name, answer, ...rest },
-  ref
-) => (
-  <Container>
-    <RadioCustom htmlFor={answer.answer_id}>
-      <input
-        ref={ref}
-        name={name}
-        id={answer.answer_id}
-        type="radio"
-        value={answer.answer_id}
-        {...rest}
-      />
-      <span className="radio-custom"></span>
-    </RadioCustom>
+const Radio: React.ForwardRefRenderFunction<HTMLInputElement, Props> = ({ name, answer, ...rest }, ref) => (
+  <Container htmlFor={answer.answer_id}>
+    <input ref={ref} name={name} id={answer.answer_id} type="radio" value={answer.answer_id} {...rest} />
+    <span className="radio-custom"></span>
     <p>{answer.answer_text}</p>
   </Container>
 )

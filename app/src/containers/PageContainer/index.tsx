@@ -3,7 +3,6 @@ import { Container, Title, Content } from './styles'
 
 type Props = {
   title: string
-  children: JSX.Element
 }
 
 const PageContainer: React.FC<Props> = ({ title, children }) => (
