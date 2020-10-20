@@ -6,7 +6,7 @@ import UseReducerBlog from '../pages/UseReducerBlog'
 import UseCallback from '../pages/UseCallback'
 import QuizApp from '../pages/QuizApp'
 
-const Routes: React.FC = (): JSX.Element => (
+const Routes: React.FC = () => (
   <Switch>
     <Route path={'/'} exact component={ToDoApp} />
     <Route path={'/calc'} exact component={Calculator} />

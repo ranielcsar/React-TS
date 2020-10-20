@@ -1,7 +1,7 @@
 import React from 'react'
 import Routes from '../../routes'
 import { BrowserRouter } from 'react-router-dom'
-import Sidebar from '../../components/Sidebar'
+import Sidebar from '../Sidebar'
 
 import { Container, Content } from './styles'
 

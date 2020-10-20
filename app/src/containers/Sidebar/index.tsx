@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container } from './styles'
-import NavLink from '../NavLink'
+import NavLink from '../../components/NavLink'
 
-const Sidebar: React.FC = (): JSX.Element => (
+const Sidebar: React.FC = () => (
   <Container>
     <NavLink url={''} label={'ToDo App'} />
     <NavLink url={'calc'} label={'Calculator'} />

@@ -7,8 +7,8 @@ type Props = {
   onClick: (evt: MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button: React.FC<Props> = ({ label, onClick }) => {
-  return <Container onClick={onClick}>{label}</Container>
-}
+const Button: React.FC<Props> = ({ label, onClick }) => (
+  <Container onClick={onClick}>{label}</Container>
+)
 
 export default Button
