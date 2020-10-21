@@ -1,21 +1,22 @@
 import { Dispatch } from 'react'
 
 export type TQuestion = {
-  id: number
+  id: string
   question: string
   answers: {
     answer_id: string
     answer_text: string
   }[]
-  correctAnswer: number
+  correctAnswer: string
 }
 
 export type State = {
   questions: TQuestion[]
+  userSelectedAnswers: string[]
 }
 
 export type Payload = {
-  selectedAnswer: number
+  selectedAnswer: string
 }
 
 export type Action = {

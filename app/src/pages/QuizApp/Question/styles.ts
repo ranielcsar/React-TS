@@ -2,4 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div``
 
-export const AnswerForm = styled.form``
+export const Title = styled.h1`
+  margin-bottom: 1rem;
+`

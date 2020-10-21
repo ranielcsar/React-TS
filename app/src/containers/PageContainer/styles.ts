@@ -8,4 +8,4 @@ export const Title = styled.h1`
   margin-bottom: 5rem;
 `
 
-export const Content = styled.div``
+export const Content = styled.section``

@@ -17,13 +17,11 @@ const UseCallback: React.FC = () => {
 
   useEffect(() => {
     fetchImages()
-  }, [])
+  }, [fetchImages])
 
   return (
     <PageContainer title={'UseCallback'}>
-      <Container>
-        {!images ? <h1>Carregando...</h1> : <ImageList images={images} />}
-      </Container>
+      <Container>{!images ? <h1>Carregando...</h1> : <ImageList images={images} />}</Container>
     </PageContainer>
   )
 }
