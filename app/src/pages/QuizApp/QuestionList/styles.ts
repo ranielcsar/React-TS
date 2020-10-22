@@ -1,6 +1,15 @@
 import styled from 'styled-components'
 import { Button } from '../../../styles/global'
 
+export const Counter = styled.h1`
+  margin-bottom: 2rem;
+`
+
+export const Footer = styled.footer`
+  display: flex;
+  margin-top: 2rem;
+`
+
 export const ActionButton = styled(Button)`
   color: var(--black);
   background: none;
@@ -10,9 +19,4 @@ export const ActionButton = styled(Button)`
     background: none;
     color: var(--primary-color);
   }
-`
-
-export const Footer = styled.footer`
-  display: flex;
-  margin-top: 2rem;
 `
