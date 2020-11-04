@@ -6,6 +6,8 @@ import { Footer, ActionButton, Counter } from './styles'
 import { FormHandles } from '@unform/core'
 import { Actions } from '../QuestionStore/questionReducer'
 import { UnformContainer } from '../styles'
+import * as Yup from 'yup'
+import { displayYupError } from '../../../utils/displayYupError'
 
 type FormData = {
   answer: string
@@ -17,11 +19,17 @@ const QuestionList: React.FC = () => {
     dispatch,
   } = useContext<QStore>(QStoreContext)
 
-  const formRef = useRef<FormHandles>(null)
+  const formRef: any = useRef<FormHandles>(null)
 
-  const handleData = useCallback(
-    (data: FormData) => {
-      if (data.answer === '') return
+  const handleData = useCallback(async (data: FormData) => {
+    try {
+      const dataSchema = Yup.object({
+        answer: Yup.string().required('Selecione uma resposta.')
+      })
+
+      await dataSchema.validate(data, {
+        abortEarly: false,
+      })
 
       dispatch({
         type: Actions.ADD_USER_ANSWER,
@@ -29,10 +37,14 @@ const QuestionList: React.FC = () => {
           selectedAnswer: data.answer,
         },
       })
-      formRef.current?.reset()
-    },
-    [dispatch]
-  )
+
+      handleNextQuestion()
+      formRef.current.reset()
+    } catch (err) {
+      displayYupError(err)
+    }
+
+  }, [dispatch])
 
   const [currentQuestion, setCurrentQuestion] = useState<TQuestion>()
   const [question, setQuestion] = useState<number>(0)
@@ -46,14 +58,7 @@ const QuestionList: React.FC = () => {
     setCurrentQuestion(currentQuestion)
   }
 
-  function handlePreviewQuestion() {
-    if (question === 0) return
-
-    setQuestion(question - 1)
-
-    let currentQuestion = questions[question]
-    setCurrentQuestion(currentQuestion)
-  }
+  const handleFinish = () => dispatch({ type: Actions.CHECK_ANSWERS, payload: { selectedAnswer: '' } })
 
   useEffect(() => {
     setCurrentQuestion(questions[question])
@@ -69,15 +74,12 @@ const QuestionList: React.FC = () => {
         {currentQuestion && <Question question={currentQuestion} />}
 
         <Footer>
-          {question === 0 ? (
-            <ActionButton onClick={handleNextQuestion}>Próximo</ActionButton>
+          {question !== questions.length - 1 ? (
+            <ActionButton type="submit">Próximo</ActionButton>
           ) : (
-            <>
-              <ActionButton onClick={handlePreviewQuestion}>Anterior</ActionButton>
-              <ActionButton type="submit" onClick={handleNextQuestion}>
-                Próximo
-              </ActionButton>
-            </>
+            <ActionButton type="submit" onClick={handleFinish}>
+              Finalizar
+            </ActionButton>
           )}
         </Footer>
       </UnformContainer>
