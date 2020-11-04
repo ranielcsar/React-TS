@@ -5,7 +5,7 @@ import { Container, Title, Subtitle } from './styles'
 
 const Post: React.FC<TPost> = ({ title, subtitle }) => {
   return (
-    <Container>
+    <Container key={title}>
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
     </Container>

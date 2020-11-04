@@ -7,7 +7,7 @@ import { FormHandles } from '@unform/core'
 import { Actions } from '../QuestionStore/questionReducer'
 import { UnformContainer } from '../styles'
 import * as Yup from 'yup'
-import { displayYupError } from '../../../utils/displayYupError'
+import { displayYupError } from 'utils/displayYupError'
 
 type FormData = {
   answer: string

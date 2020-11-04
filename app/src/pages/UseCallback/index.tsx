@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import api from '../../services/api'
-import PageContainer from '../../containers/PageContainer'
+import api from 'services/api'
+import PageContainer from 'containers/PageContainer'
 import { TImage } from './types'
 import ImageList from './ImageList'
 

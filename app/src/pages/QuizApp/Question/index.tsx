@@ -1,5 +1,5 @@
 import React from 'react'
-import Radios from '../../../components/Inputs/Radios'
+import Radios from 'components/Inputs/Radios'
 import { TQuestion } from '../types'
 import { Container, Title } from './styles'
 

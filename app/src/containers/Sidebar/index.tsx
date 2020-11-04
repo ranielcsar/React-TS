@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from './styles'
-import NavLink from '../../components/NavLink'
+import NavLink from 'components/NavLink'
 
 const Sidebar: React.FC = () => (
   <Container>
