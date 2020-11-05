@@ -24,3 +24,4 @@ Libs on project
 - Axios
 - React icons
 - Styled components
+- Yup
