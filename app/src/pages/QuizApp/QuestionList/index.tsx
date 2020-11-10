@@ -21,7 +21,7 @@ const QuestionList: React.FC = () => {
 
   const formRef: any = useRef<FormHandles>(null)
 
-  const handleData = useCallback(async (data: FormData) => {
+  const handleData = async (data: FormData) => {
     try {
       const dataSchema = Yup.object({
         answer: Yup.string().required('Selecione uma resposta.')
@@ -43,8 +43,7 @@ const QuestionList: React.FC = () => {
     } catch (err) {
       displayYupError(err)
     }
-
-  }, [dispatch])
+  }
 
   const [currentQuestion, setCurrentQuestion] = useState<TQuestion>()
   const [question, setQuestion] = useState<number>(0)

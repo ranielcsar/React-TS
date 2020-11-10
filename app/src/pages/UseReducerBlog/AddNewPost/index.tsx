@@ -12,7 +12,7 @@ const AddNewPost: React.FC = () => {
   const titleRef: any = useRef<HTMLInputElement>(null)
   const subtitleRef: any = useRef<HTMLInputElement>(null)
 
-  const resetValues = useCallback(() =>{
+  const resetValues = useCallback(() => {
     subtitleRef.current.value = ''
     titleRef.current.value = ''
   }, [])
