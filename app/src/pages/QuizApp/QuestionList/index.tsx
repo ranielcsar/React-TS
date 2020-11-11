@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useCallback, useEffect } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import { QStore, TQuestion } from '../types'
 import { QStoreContext } from '../QuestionStore'
 import Question from '../Question'
@@ -38,6 +38,15 @@ const QuestionList: React.FC = () => {
         },
       })
 
+      if (question === questions.length - 1) {        
+        dispatch({
+          type: Actions.CHECK_ANSWERS,
+          payload: {
+            selectedAnswer: '',
+          },
+        })
+      }
+
       handleNextQuestion()
       formRef.current.reset()
     } catch (err) {
@@ -57,8 +66,6 @@ const QuestionList: React.FC = () => {
     setCurrentQuestion(currentQuestion)
   }
 
-  const handleFinish = () => dispatch({ type: Actions.CHECK_ANSWERS, payload: { selectedAnswer: '' } })
-
   useEffect(() => {
     setCurrentQuestion(questions[question])
   }, [question, questions])
@@ -76,7 +83,7 @@ const QuestionList: React.FC = () => {
           {question !== questions.length - 1 ? (
             <ActionButton type="submit">Próximo</ActionButton>
           ) : (
-            <ActionButton type="submit" onClick={handleFinish}>
+            <ActionButton type="submit">
               Finalizar
             </ActionButton>
           )}
