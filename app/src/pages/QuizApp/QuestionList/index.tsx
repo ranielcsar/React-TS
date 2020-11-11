@@ -3,7 +3,7 @@ import { QStore, TQuestion } from '../types'
 import { QStoreContext } from '../QuestionStore'
 import Question from '../Question'
 import { Footer, ActionButton, Counter } from './styles'
-import { FormHandles } from '@unform/core'
+import { FormHandles, SubmitHandler } from '@unform/core'
 import { Actions } from '../QuestionStore/questionReducer'
 import { UnformContainer } from '../styles'
 import * as Yup from 'yup'
@@ -21,7 +21,7 @@ const QuestionList: React.FC = () => {
 
   const formRef: any = useRef<FormHandles>(null)
 
-  const handleData = async (data: FormData) => {
+  const handleData: SubmitHandler<FormData> = async (data) => {
     try {
       const dataSchema = Yup.object({
         answer: Yup.string().required('Selecione uma resposta.')
@@ -48,7 +48,7 @@ const QuestionList: React.FC = () => {
       }
 
       handleNextQuestion()
-      formRef.current.reset()
+      formRef.current.setFieldValue('answer', '')
     } catch (err) {
       displayYupError(err)
     }
