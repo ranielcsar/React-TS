@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react'
+import React, { useState, useContext, useRef, useEffect, RefObject } from 'react'
 import { QStore, TQuestion } from '../types'
 import { QStoreContext } from '../QuestionStore'
 import Question from '../Question'
@@ -19,7 +19,7 @@ const QuestionList: React.FC = () => {
     dispatch,
   } = useContext<QStore>(QStoreContext)
 
-  const formRef: any = useRef<FormHandles>(null)
+  const formRef: RefObject<FormHandles> = useRef(null)
 
   const handleData: SubmitHandler<FormData> = async (data) => {
     try {
@@ -48,7 +48,7 @@ const QuestionList: React.FC = () => {
       }
 
       handleNextQuestion()
-      formRef.current.setFieldValue('answer', '')
+      formRef.current?.clearField('answer')
     } catch (err) {
       displayYupError(err)
     }
