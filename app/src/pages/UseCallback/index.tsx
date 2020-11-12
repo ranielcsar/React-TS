@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import api from '../../services/api'
-import PageContainer from '../../containers/PageContainer'
+import api from 'services/api'
+import PageContainer from 'containers/PageContainer'
 import { TImage } from './types'
 import ImageList from './ImageList'
 
@@ -17,13 +17,11 @@ const UseCallback: React.FC = () => {
 
   useEffect(() => {
     fetchImages()
-  }, [])
+  }, [fetchImages])
 
   return (
     <PageContainer title={'UseCallback'}>
-      <Container>
-        {!images ? <h1>Carregando...</h1> : <ImageList images={images} />}
-      </Container>
+      <Container>{!images ? <h1>Carregando...</h1> : <ImageList images={images} />}</Container>
     </PageContainer>
   )
 }

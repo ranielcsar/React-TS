@@ -7,6 +7,7 @@ import questionReducer from './questionReducer'
 const initialStoreState: QStore = {
   state: {
     questions: createQuestions(),
+    userSelectedAnswers: [],
   },
 
   dispatch: () => ({
@@ -18,16 +19,9 @@ const initialStoreState: QStore = {
 export const QStoreContext = createContext<QStore>(initialStoreState)
 
 const QuestionStore: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(
-    questionReducer,
-    initialStoreState.state
-  )
+  const [state, dispatch] = useReducer<Reducer<State, Action>>(questionReducer, initialStoreState.state)
 
-  return (
-    <QStoreContext.Provider value={{ state, dispatch }}>
-      {children}
-    </QStoreContext.Provider>
-  )
+  return <QStoreContext.Provider value={{ state, dispatch }}>{children}</QStoreContext.Provider>
 }
 
 export default QuestionStore

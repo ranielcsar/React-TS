@@ -8,6 +8,7 @@ export const Container = styled.label`
   position: relative;
   cursor: pointer;
   width: max-content;
+  margin-bottom: 1rem;
 
   p {
     width: max-content;

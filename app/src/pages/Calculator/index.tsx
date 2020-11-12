@@ -1,7 +1,7 @@
 import React, { useState, MouseEvent } from 'react'
-import PageContainer from '../../containers/PageContainer'
+import PageContainer from 'containers/PageContainer'
 import { sum, subtraction, multiplication, division, addValueToNumber } from './utils'
-import Button from '../../components/Button'
+import Button from 'components/Button'
 import { Container, CalcScreen, Keyboard, Numbers, Operations, EqualButton, ResetButton } from './styles'
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]

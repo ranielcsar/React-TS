@@ -1,9 +1,9 @@
 import React, { useRef, FormEvent, useState } from 'react'
 import { TodoList, FormContainer, AddButton } from './styles'
-import TextInput from '../../components/Inputs/TextInput'
+import TextInput from 'components/Inputs/TextInput'
 import { createNewTodo, deleteTodo, setTodoIsDone } from './utils'
 import ToDo from './ToDo'
-import PageContainer from '../../containers/PageContainer'
+import PageContainer from 'containers/PageContainer'
 import { ToDoType } from './types'
 
 const ToDoApp: React.FC = () => {

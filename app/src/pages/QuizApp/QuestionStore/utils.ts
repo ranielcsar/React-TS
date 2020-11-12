@@ -1,9 +1,18 @@
-import { TQuestion, Action } from '../types'
+import { TQuestion } from "../types"
 
-export function checkAnswer(question: TQuestion, action: Action) {
-  if (question.correctAnswer === action.payload.selectedAnswer) {
-    return true
+export function checkAnswers(answers: string[], questions: TQuestion[]) {
+
+  let verifiedQuestions = questions.map(question => {
+    let verify = answers.find(answer => question.correctAnswer === answer)
+
+    return verify === question.correctAnswer
+  })
+
+  let count = 0;
+
+  for (let question of verifiedQuestions) {
+    if (question) count++
   }
 
-  return false
+  alert(`Você acertou ${count} de ${questions.length}!`);
 }
