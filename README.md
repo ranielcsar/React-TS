@@ -14,7 +14,7 @@ Applications (Aplicativos)
 - Calculator (basic operations)
 - Post blog creator
 - App using 'useCallback'
-- Quiz - (in progress)
+- Quiz
 
 
 Libs on project 
