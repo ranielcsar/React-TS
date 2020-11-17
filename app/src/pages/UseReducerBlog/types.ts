@@ -1,8 +1,8 @@
 import { Dispatch } from 'react'
 
 export type TPost = {
-  title: string
-  subtitle: string
+  title?: string
+  subtitle?: string
 }
 
 export type State = {

@@ -1,4 +1,4 @@
-import React, { FormEvent, useRef, useContext, useCallback } from 'react'
+import React, { FormEvent, useRef, useContext, useCallback, RefObject } from 'react'
 import { displayYupError } from 'utils/displayYupError'
 import { StoreContext } from '../store'
 import { ADD_POST } from '../store/reducers/postReducer'
@@ -7,22 +7,27 @@ import * as Yup from 'yup'
 
 import { Container, Input, AddButton } from './styles'
 
+interface RefInterface extends HTMLInputElement {
+  value: string
+}
+
 const AddNewPost: React.FC = () => {
   const { dispatch } = useContext<TStore>(StoreContext)
-  const titleRef: any = useRef<HTMLInputElement>(null)
-  const subtitleRef: any = useRef<HTMLInputElement>(null)
+  const titleRef: RefObject<RefInterface> = useRef(null)
+  const subtitleRef: RefObject<RefInterface> = useRef(null)
 
   const resetValues = useCallback(() => {
-    subtitleRef.current.value = ''
-    titleRef.current.value = ''
+    if (titleRef.current) titleRef.current.value = ''
+
+    if (subtitleRef.current) subtitleRef.current.value = ''
   }, [])
 
   const handleNewPost = useCallback(async (evt: FormEvent) => {
     evt.preventDefault()
 
     let post = {
-      title: titleRef.current.value,
-      subtitle: subtitleRef.current.value
+      title: titleRef.current?.value,
+      subtitle: subtitleRef.current?.value
     }
 
     try {
