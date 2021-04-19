@@ -1,7 +1,7 @@
-import * as Yup from 'yup'
+import { ValidationError } from 'yup'
 
-export function displayYupError(err: Yup.ValidationError) {
-  if (err instanceof Yup.ValidationError) {
+export function displayYupError(err: ValidationError) {
+  if (err instanceof ValidationError) {
     alert(err.message)
   }
 }

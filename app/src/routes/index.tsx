@@ -5,6 +5,7 @@ import Calculator from '../pages/Calculator'
 import UseReducerBlog from '../pages/UseReducerBlog'
 import UseCallback from '../pages/UseCallback'
 import QuizApp from '../pages/QuizApp'
+import ColorVariations from '../pages/ColorVariations'
 
 const Routes: React.FC = () => (
   <Switch>
@@ -13,6 +14,7 @@ const Routes: React.FC = () => (
     <Route path={'/blog'} exact component={UseReducerBlog} />
     <Route path={'/usecallback'} exact component={UseCallback} />
     <Route path={'/quiz'} exact component={QuizApp} />
+    <Route path={'/colors'} exact component={ColorVariations} />
   </Switch>
 )
 
