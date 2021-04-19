@@ -17,7 +17,7 @@ Applications (Aplicativos)
 - Quiz
 
 ---
-HSL Monochromatic Palette Generator
+**HSL Monochromatic Palette Generator** <br>
 Sandbox: https://codesandbox.io/s/hsl-monochromatic-palette-generator-uopwk
 
 
