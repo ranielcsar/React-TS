@@ -16,6 +16,10 @@ Applications (Aplicativos)
 - App using 'useCallback'
 - Quiz
 
+---
+HSL Monochromatic Palette Generator
+Sandbox: https://codesandbox.io/s/hsl-monochromatic-palette-generator-uopwk
+
 
 Libs on project 
 ---
