@@ -16,19 +16,17 @@ Applications (Aplicativos)
 - App using 'useCallback'
 - Quiz
 
----
-**HSL Monochromatic Palette Generator** <br>
-Sandbox: https://codesandbox.io/s/hsl-monochromatic-palette-generator-uopwk
-
----
-**Custom Hooks :D**
-
-
-Libs on project 
----
+**Libs on project**
 - Unform
 - React router
 - Axios
 - React icons
 - Styled components
 - Yup
+
+---
+**HSL Monochromatic Palette Generator** <br>
+Sandbox: https://codesandbox.io/s/hsl-monochromatic-palette-generator-uopwk
+
+---
+**Custom Hooks :D**
