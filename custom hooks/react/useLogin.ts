@@ -13,6 +13,26 @@ function useLogin() {
   const formRef = useRef(initRef)
   const [values, setValues] = useState({})
 
+  const getNewValue = (newNode: any) => {
+    if (newNode.length === 0) {
+      if (newNode.name) {
+        return {
+          [newNode.name]: newNode.value,
+        }
+      }
+    }
+
+    const input = newNode.find((node: Input) => node.name !== undefined) || ({} as Input)
+
+    if (input.name) {
+      return {
+        [input.name]: input.value,
+      }
+    }
+
+    return
+  }
+
   const getInputValues = useCallback(() => {
     const form: any = formRef.current
     const nodes = form.childNodes
@@ -21,13 +41,9 @@ function useLogin() {
     for (let node of nodes) {
       let newNode = [].slice.call(node.children)
 
-      const input = newNode.find((node: Input) => node.name !== undefined) || ({} as Input)
-
-      if (input.name) {
-        newValues = {
-          ...newValues,
-          [input.name]: input.value,
-        }
+      newValues = {
+        ...newValues,
+        ...getNewValue(newNode),
       }
     }
 
