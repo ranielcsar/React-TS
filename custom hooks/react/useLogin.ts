@@ -1,24 +1,25 @@
 import { RefObject, useRef, useState, FormEvent, useCallback } from 'react'
 
-type Ref = HTMLFormElement
-
 type Input = {
   name: string
   value: string
 }
 
-const initRef = {} as RefObject<Ref>
+type FormRef = HTMLFormElement
+
+const initFormRef = {} as RefObject<FormRef>
+const BUTTON_TAG_NAME = 'BUTTON'
+const INPUT_TAG_NAME = 'INPUT'
 
 function useLogin() {
-  const formRef = useRef(initRef)
+  const formRef = useRef(initFormRef)
   const [values, setValues] = useState({})
 
-  const getNewValue = (newNode: any) => {
-    if (newNode.length === 0) {
-      if (newNode.name) {
-        return {
-          [newNode.name]: newNode.value,
-        }
+  const getNewValue = useCallback((newNode: any) => {
+    /* prettier-ignore */
+    if (newNode.tagName === INPUT_TAG_NAME && newNode.name) {
+      return {
+        [newNode.name]: newNode.value
       }
     }
 
@@ -31,7 +32,15 @@ function useLogin() {
     }
 
     return
-  }
+  }, [])
+
+  const verifyNodes = useCallback((node: any, newNodeList: any) => {
+    return newNodeList.length === 0
+      ? node.tagName !== BUTTON_TAG_NAME
+        ? node
+        : newNodeList
+      : newNodeList
+  }, [])
 
   const getInputValues = useCallback(() => {
     const form: any = formRef.current
@@ -39,16 +48,18 @@ function useLogin() {
     let newValues = {} as Input
 
     for (let node of nodes) {
-      let newNode = [].slice.call(node.children)
+      const newNodeList = [].slice.call(node.children)
+      const newNode = verifyNodes(node, newNodeList)
+      const newValue = getNewValue(newNode)
 
       newValues = {
         ...newValues,
-        ...getNewValue(newNode),
+        ...newValue,
       }
     }
 
     setValues(newValues)
-  }, [])
+  }, [getNewValue, verifyNodes])
 
   /* prettier-ignore */
   const onSubmit = useCallback((event: FormEvent) => {
