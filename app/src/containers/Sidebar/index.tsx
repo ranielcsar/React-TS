@@ -9,7 +9,7 @@ const Sidebar: React.FC = () => (
     <NavLink url={'blog'} label={'UseReducerBlog'} />
     <NavLink url={'usecallback'} label={'UseCallback'} />
     <NavLink url={'quiz'} label={'QuizApp'} />
-    <NavLink url={'colors'} label={'ColorVariations'} />
+    <NavLink url={'set-state-callback'} label={'setState as Callback'} />
   </Container>
 )
 
